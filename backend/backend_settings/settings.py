@@ -12,20 +12,25 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import environ
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-# BASE_DIR = Path(__file__).resolve().parent.parent
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+root = environ.Path(__file__) -3  # get root of the project
+env = environ.Env()
+# environ.Env.read_env(env_file=os.path.join(root, ".env"))
+
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = root()
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ["SECRET_KEY"]
+SECRET_KEY = env.str("SECRET_KEY", default="secretKeyForDjango")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.str("DEBUG", default=False) 
 
 ALLOWED_HOSTS = ['*']
 
@@ -81,12 +86,12 @@ WSGI_APPLICATION = 'backend_settings.wsgi.application'
 
 DATABASES = {
     "default": {
-        "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.postgresql"),
-        "NAME": os.environ.get("SQL_DATABASE", "project_db"),
-        "USER": os.environ.get("SQL_USER", "postgres"),
-        "PASSWORD": os.environ["SQL_PASSWORD"],
-        "HOST": os.environ.get("SQL_HOST", "database"),
-        "PORT": os.environ.get("SQL_PORT", "5432"),
+        "ENGINE": env.str("SQL_ENGINE", default="django.db.backends.postgresql"),
+        "NAME": env.str("SQL_DATABASE", default="project_db"),
+        "USER": env.str("SQL_USER", default="postgres"),
+        "PASSWORD": env.str("SQL_PASSWORD"),
+        "HOST": env.str("SQL_HOST", default="database"),
+        "PORT": env.str("SQL_PORT", default="5432"),
     }
 }
 

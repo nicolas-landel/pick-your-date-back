@@ -3,7 +3,7 @@ version: '3.1'
 services:
   back:
     build: ./backend
-    container_name: backend
+    container_name: back
     command: python manage.py runserver 0.0.0.0:8090
     ports:
       - "8090:8090"
