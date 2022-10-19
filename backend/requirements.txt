@@ -1,3 +1,0 @@
-#Version of the packages used
-Django==3.2.7
-psycopg2-binary==2.8.4
