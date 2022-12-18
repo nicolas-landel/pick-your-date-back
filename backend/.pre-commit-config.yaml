@@ -1,4 +1,6 @@
 exclude: ^(.*/frontend/.*|.*/migrations/.*|.*/Pipfile.lock)
+repos:
+  - backend
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
