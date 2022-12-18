@@ -15,6 +15,7 @@ drf-yasg = "*"
 rest-framework-generic-relations = "*"
 django-extensions = "*"
 ipython = "==7.31.0"
+pre-commit = "*"
 
 [dev-packages]
 black = "*"
@@ -32,7 +33,6 @@ pytest-cov = "*"
 pyparsing = "*"
 pydot = "*"
 pygraphviz = "*"
-pre-commit="*"
 
 [requires]
 python_version = "3.8"
