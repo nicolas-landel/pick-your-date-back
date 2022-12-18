@@ -28,7 +28,7 @@ admin:
 
 down:
 	docker-compose down
-	
+
 downv:
 	docker-compose down -v
 
