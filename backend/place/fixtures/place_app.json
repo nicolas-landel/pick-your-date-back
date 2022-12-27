@@ -1,0 +1,57 @@
+[
+    {
+        "model": "place.place",
+        "pk": "57ddf7b4-1769-47b4-af62-ba3ddf4a4cdb",
+        "fields": {
+            "created_at": "2022-12-27T18:29:57Z",
+            "updated_at": "2022-12-27T18:31:23.196Z",
+            "name": "Ile aux moines",
+            "address": "Le port",
+            "address_comment": "Il faut prendre le passeur (5€50) à port-blanc (Baden) et c'est en face !",
+            "zipcode": "56000",
+            "city_name": "Ile-aux-Moines",
+            "country_name": "FRANCE",
+            "latitude": null,
+            "longitude": null,
+            "description": "Belle maison de famille",
+            "max_capacity": 25,
+            "created_by": "64922eae-fd74-47ee-8794-bce09a3a4361"
+        }
+    },
+    {
+        "model": "place.option",
+        "pk": "206b87fd-2559-428b-a82f-3475035c86ae",
+        "fields": {
+            "created_at": "2022-12-27T18:32:35Z",
+            "updated_at": "2022-12-27T18:32:59.257Z",
+            "name": "J'y vais avec de copains, pas de pb pour me rejoindre",
+            "description": "J'y vais avec des copains, on fera la fête. Les cousins sont bien venus !!",
+            "color": "#FFFFFF",
+            "created_by": "64922eae-fd74-47ee-8794-bce09a3a4361"
+        }
+    },
+    {
+        "model": "place.option",
+        "pk": "9b0ab621-ccdc-461d-b33a-fd81ae3a544b",
+        "fields": {
+            "created_at": "2022-12-27T18:31:33Z",
+            "updated_at": "2022-12-27T18:31:48.322Z",
+            "name": "Je veux y aller",
+            "description": "",
+            "color": "#FFFFFF",
+            "created_by": "64922eae-fd74-47ee-8794-bce09a3a4361"
+        }
+    },
+    {
+        "model": "place.option",
+        "pk": "d34a96d6-8316-4e3a-8030-457749b057f6",
+        "fields": {
+            "created_at": "2022-12-27T18:32:07Z",
+            "updated_at": "2022-12-27T18:32:10.730Z",
+            "name": "Je veux y aller tout seul",
+            "description": "",
+            "color": "#FFFFFF",
+            "created_by": "64922eae-fd74-47ee-8794-bce09a3a4361"
+        }
+    }
+]
