@@ -1,0 +1,19 @@
+[
+    {
+        "model": "user.user",
+        "pk": "1d65efae-5a54-40c2-a9a7-c52dc9178011",
+        "fields": {
+            "password": "pbkdf2_sha256$390000$RwJwZFIKBHk4vTNv4ZpxBm$XFWgEXSRe6vT75xS0amwSBxZy4f/jdCLu3+xPM5deio=",
+            "last_login": null,
+            "is_superuser": true,
+            "email": "nicolas.landel@hotmail.com",
+            "first_name": "",
+            "last_name": "",
+            "is_active": true,
+            "is_admin": true,
+            "created_at": "2022-12-27T11:01:04.549Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    }
+]

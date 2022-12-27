@@ -1,16 +1,25 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import authentication, permissions
-# from django.contrib.auth.models import User
+from core.views import ListView
 from place.models import Place
 from place.serializers import PlaceSerializer
+from rest_framework.response import Response
 
-class PlaceViews(APIView):
+
+class PlaceListView(ListView):
     # authentication_classes = [authentication.TokenAuthentication]
     # permission_classes = [permissions.IsAdminUser]
     model = Place
     serializer_class = PlaceSerializer
+    serializer = PlaceSerializer
+    queryset = Place.objects.all()
 
     def get(self, request, format=None):
-        usernames = [user.username for user in User.objects.all()]
-        return Response(usernames)
+        # user = request.user
+        queryset = self.get_queryset()
+        print("QQQQQ", queryset)
+        serializer = self.serializer(queryset, many=True)
+        print("SSSSS", serializer.data)
+        return Response(serializer.data)
+        # super().get(request, format)
+        # TODO filter user member of place
+        # queryset = self.get_queryset().filter(user=user)
+        # return Response()

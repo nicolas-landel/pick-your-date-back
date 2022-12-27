@@ -14,9 +14,7 @@ class Command(BaseCommand):
         options = Option.objects.all()
         self.stdout.write(
             self.style.SUCCESS(
-                f"Objtecs to be deleted: {places.count()} places, \
-                    {comments.count()} comments, {answers.count()} answers, \
-                    {options.count()} options"
+                f"Objtecs to be deleted: {places.count()} places, {comments.count()} comments, {answers.count()} answers, {options.count()} options"
             )
         )
         places.delete()
