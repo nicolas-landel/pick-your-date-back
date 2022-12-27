@@ -12,7 +12,7 @@ buildupd:
 
 exec:
 	docker-compose exec back ./manage.py $(filter-out $@,$(MAKECMDGOALS))
-	
+
 migr:
 	docker-compose exec back ./manage.py makemigrations
 	docker-compose exec back ./manage.py migrate --noinput
@@ -46,3 +46,6 @@ translate:
 
 backup:
 	./dump/dump_db.sh
+
+shell:
+	docker-compose exec back ./manage.py shell_plus
