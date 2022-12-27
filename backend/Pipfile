@@ -16,6 +16,7 @@ rest-framework-generic-relations = "*"
 django-extensions = "*"
 ipython = "==7.31.0"
 pre-commit = "*"
+tzdata = "*"
 
 [dev-packages]
 black = "*"
