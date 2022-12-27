@@ -17,6 +17,7 @@ services:
       - database
     stdin_open: true
     tty: true
+    restart: "on-failure"
     networks:
       - app-network
 
@@ -34,6 +35,7 @@ services:
       interval: 1s
       timeout: 3s
       retries: 30
+    restart: "on-failure"
     networks:
       - app-network
 
