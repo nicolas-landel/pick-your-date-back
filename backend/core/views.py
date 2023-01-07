@@ -2,6 +2,7 @@ from django.http import JsonResponse
 from rest_framework.views import APIView
 
 
+# TODO use rest_framework.generics GenericAPIView -> see doc https://github.com/encode/django-rest-framework/blob/master/rest_framework/generics.py
 class ListView(APIView):
     # authentication_classes = [authentication.TokenAuthentication]
     # permission_classes = [permissions.IsAdminUser]

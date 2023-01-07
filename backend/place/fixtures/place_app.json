@@ -15,7 +15,7 @@
             "longitude": null,
             "description": "Belle maison de famille",
             "max_capacity": 25,
-            "created_by": "64922eae-fd74-47ee-8794-bce09a3a4361"
+            "created_by": "1d65efae-5a54-40c2-a9a7-c52dc9178011"
         }
     },
     {
@@ -27,7 +27,7 @@
             "name": "J'y vais avec de copains, pas de pb pour me rejoindre",
             "description": "J'y vais avec des copains, on fera la fête. Les cousins sont bien venus !!",
             "color": "#FFFFFF",
-            "created_by": "64922eae-fd74-47ee-8794-bce09a3a4361"
+            "created_by": "1d65efae-5a54-40c2-a9a7-c52dc9178011"
         }
     },
     {
@@ -39,7 +39,7 @@
             "name": "Je veux y aller",
             "description": "",
             "color": "#FFFFFF",
-            "created_by": "64922eae-fd74-47ee-8794-bce09a3a4361"
+            "created_by": "1d65efae-5a54-40c2-a9a7-c52dc9178011"
         }
     },
     {
@@ -51,7 +51,7 @@
             "name": "Je veux y aller tout seul",
             "description": "",
             "color": "#FFFFFF",
-            "created_by": "64922eae-fd74-47ee-8794-bce09a3a4361"
+            "created_by": "1d65efae-5a54-40c2-a9a7-c52dc9178011"
         }
     }
 ]
