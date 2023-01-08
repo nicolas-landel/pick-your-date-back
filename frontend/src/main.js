@@ -23,7 +23,9 @@ vue.use(store);
 vue.use(vuetify);
 vue.use(i18n);
 
+vue.mount("#app");
+
 // Run!
-router.isReady().then(() => {
-  vue.mount('#app');
-});
+// router.isReady().then(() => {
+//   vue.mount('#app');
+// });

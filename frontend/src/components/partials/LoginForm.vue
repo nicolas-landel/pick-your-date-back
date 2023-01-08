@@ -5,14 +5,14 @@
       <VTextField
         v-model="loginEmail"
         name="email"
-        label="Email"
+        :label="$t('Email')"
         type="text"
         required
       ></VTextField>
       <VTextField
         v-model="loginPassword"
         name="password"
-        :label="$t('password')"
+        :label="$t('Password')"
         type="password"
         required
       ></VTextField>
@@ -24,6 +24,7 @@
 <script setup>
 import { ref } from "vue";
 import api from "@/setup/api";
+import router from "@/router"
 defineProps({});
 
 const loginEmail = ref("");
@@ -31,11 +32,15 @@ const loginPassword = ref("");
 
 const submitLogin = async () => {
   console.log("HHHHHHH", loginEmail.value, loginPassword.value);
-  const loginResponse = await api.post("/user/login/", {
+  const response = await api.post("/user/login/", {
     email: loginEmail.value,
     password: loginPassword.value,
   });
-  console.log("REPPPP", loginResponse);
+  console.log("REPPPP", response);
+  if (response && response.status === 202) {
+    console.log("PUSHHH")
+    router.push({ name: 'dashboard'})
+  }
 };
 </script>
 

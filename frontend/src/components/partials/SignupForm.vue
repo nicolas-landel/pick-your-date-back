@@ -5,28 +5,28 @@
         <VTextField
         v-model="signupFirstName"
         name="firstName"
-        :label="$t('firstName')"
+        :label="$t('FirstName')"
         type="text"
         required
       ></VTextField>
       <VTextField
         v-model="signupLastName"
         name="lastName"
-        :label="$t('lastName')"
+        :label="$t('LastName')"
         type="text"
         required
       ></VTextField>
       <VTextField
         v-model="signupEmail"
         name="email"
-        label="Email"
+        :label="$t('Email')"
         type="text"
         required
       ></VTextField>
       <VTextField
         v-model="signupPassword"
         name="password"
-        :label="$t('password')"
+        :label="$t('Password')"
         type="password"
         required
       ></VTextField>
@@ -46,14 +46,16 @@ const signupEmail = ref("");
 const signupPassword = ref("");
 
 const submitSignup = async () => {
-  console.log("HHHHHHH", signupFirstName.value, signupLastName.value);
   const response = await api.post("/user/signup/", {
     first_name: signupFirstName.value,
     last_name: signupLastName.value,
     email: signupEmail.value,
     password: signupPassword.value,
   });
-  console.log("REPPPP", response);
+  console.log("REPPPP", response, response.status);
+  if (response.status === 201) {
+    router.push()
+  }
 };
 </script>
 

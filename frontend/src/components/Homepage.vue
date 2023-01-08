@@ -1,35 +1,29 @@
 <template>
-  <VContainer class="fill-height">
-    <VResponsive class="d-flex align-center text-center fill-height">
-      <div>TEXT INTRO</div>
-      <div class="homepage-grid">
-        <LoginForm />
-
-        <div class="homepage-separator"></div>
-
-        <SignupForm />
-      </div>
-    </VResponsive>
-  </VContainer>
+    <VContainer class="fill-height">
+      <VResponsive class="d-flex align-center text-center fill-height">
+        <!-- TODO set condition on user -->
+        <Connection/>
+        <VBtn @click="goDashboard">Go to Dashboard</VBtn>
+      </VResponsive>
+    </VContainer>
 </template>
 
 <script setup>
-import LoginForm from "@/components/partials/LoginForm.vue";
-import SignupForm from "@/components/partials/SignupForm.vue";
+import { ref } from "vue";
+import AppNavbar from "@/components/shared/AppNavbar.vue";
+import Connection from "@/components/partials/Connection.vue";
+import { useRouter, useRoute } from 'vue-router'
+
 defineProps({});
+
+const user = ref(false);
+const router = useRouter()
+
+const goDashboard = () => {
+  router.push("/dashboard")
+}
+
 </script>
 
 <style scoped>
-.homepage-grid {
-  display: grid;
-  grid-template-columns: 45% 1px 45%;
-  margin-left: 10%;
-  margin-right: 10%;
-  grid-column-gap: 50px;
-}
-
-.homepage-separator {
-  border-left: outset;
-  padding-top: 40px;
-}
 </style>

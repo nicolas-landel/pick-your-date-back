@@ -1,28 +1,41 @@
 import { createWebHistory, createRouter } from "vue-router";
 
-import appChildren from "./children/app-children";
+// import appChildren from "./children/app-children";
 
-// const Homepage = () =>
-//   import(/* webpackChunkName: "Homepage" */ "@/components/Homepage");
 
-import Homepage from "@/components/Homepage.vue"
+const Homepage = () => import("@/components/Homepage.vue")
+const Dashboard = () => import("@/components/Dashboard.vue")
 
 const routes = [
   {
     path: "/",
-    name: "Home",
+    name: "home",
     component: Homepage,
-    children: appChildren,
+    // children: appChildren,
     // beforeEnter: async (to, from, next) => {
-    //   next();
+    //   next({ name: "connection" });
+    //   // if (store.getters["user/isLogged"]) {
+    //   //   next({ name: "dashboard" });
+    //   // } else {
+    //   //   next({ name: "connection" });
+    //   // }
     // },
   },
+  {
+    path: "/dashboard",
+    name: "dashboard",
+    component: Dashboard,
+    // children: dashboardChildren,
+  },
+  {
+    path: "/:catchAll(.*)",
+    component: Homepage,
+  }
 ];
 
-
 const router = createRouter({
-    history: createWebHistory(),
-    routes,
-  });
-  
+  history: createWebHistory(),
+  routes,
+});
+
 export default router;
