@@ -1,12 +1,12 @@
 from core.views import ListView
 from place.models import Place
 from place.serializers import PlaceSerializer
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 
 class PlaceListView(ListView):
-    # authentication_classes = [authentication.TokenAuthentication]
-    # permission_classes = [permissions.IsAdminUser]
+    permission_classes = [IsAuthenticated]
     model = Place
     serializer_class = PlaceSerializer
     serializer = PlaceSerializer
