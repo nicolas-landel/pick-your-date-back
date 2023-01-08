@@ -1,4 +1,3 @@
-import Vue from "vue";
 import Vuex from "vuex";
 import VuexORM from "@vuex-orm/core";
 
@@ -10,7 +9,7 @@ import {
 // Import store modules
 import PlaceModule from "./modules/place";
 
-Vue.use(Vuex);
+// Vue.use(Vuex);
 
 const database = new VuexORM.Database();
 

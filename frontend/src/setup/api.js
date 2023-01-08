@@ -1,10 +1,11 @@
+
 import axios from "axios";
 
 
-console.log("ENNNNV", process.env.VUE_APP_API_URL)
+console.log("ENNNNV", import.meta.env.VITE_API_URL)
 
 const API = axios.create({
-  baseURL: process.env.VUE_APP_API_URL,
+  baseURL: import.meta.env.VITE_API_URL,
   headers: {
     "Content-type": "application/json"
   },
@@ -13,6 +14,9 @@ const API = axios.create({
 class APIService {
   get(path) {
     return API.get(path)
+  }
+  post(path, data) {
+    return API.post(path, data)
   }
 }
 

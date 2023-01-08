@@ -1,20 +1,29 @@
-import { createApp } from "vue";
-import App from './App.vue'
-// import i18n from "./setup/i18n";
-// import vuetify from "./setup/vuetify";
-import router from "./router";
-// import store from "./store";
+import { createApp } from 'vue';
+import App from './App.vue';
+import router from './router';
+import store from './store';
+import i18n from '@/setup/i18n'
+
+// Vuetify
+import 'vuetify/styles'
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
+
+const vuetify = createVuetify({
+  components,
+  directives,
+})
 
 
-const app = createApp(App);
-app.use(router).mount("#app")
 
-// console.log("HHHHH", Vue)
+const vue = createApp(App);
+vue.use(router);
+vue.use(store);
+vue.use(vuetify);
+vue.use(i18n);
 
-// new Vue({
-//   router,
-//   // store,
-//   // i18n,
-//   vuetify,
-//   render: (h) => h(App),
-// }).$mount("#app");
+// Run!
+router.isReady().then(() => {
+  vue.mount('#app');
+});

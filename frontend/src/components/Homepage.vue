@@ -1,23 +1,35 @@
 <template>
-  <div class="hello">
-    JJJJ
-  </div>
+  <VContainer class="fill-height">
+    <VResponsive class="d-flex align-center text-center fill-height">
+      <div>TEXT INTRO</div>
+      <div class="homepage-grid">
+        <LoginForm />
+
+        <div class="homepage-separator"></div>
+
+        <SignupForm />
+      </div>
+    </VResponsive>
+  </VContainer>
 </template>
 
-<script>
-import api from "@/setup/api";
-
-export default {
-  name: "Homepage",
-  async setup() {
-    console.log("NETERRRR", api);
-    const res = await api.get("/place/");
-    const places = res.data
-    console.log("PLACESSSS", places, res);
-  }
-};
+<script setup>
+import LoginForm from "@/components/partials/LoginForm.vue";
+import SignupForm from "@/components/partials/SignupForm.vue";
+defineProps({});
 </script>
 
 <style scoped>
+.homepage-grid {
+  display: grid;
+  grid-template-columns: 45% 1px 45%;
+  margin-left: 10%;
+  margin-right: 10%;
+  grid-column-gap: 50px;
+}
 
+.homepage-separator {
+  border-left: outset;
+  padding-top: 40px;
+}
 </style>

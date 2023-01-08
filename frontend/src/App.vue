@@ -1,18 +1,21 @@
 <template>
-  <div id="app">
-    <Suspense>
+  <VApp id="app">
+    <AppNavbar/>
+    <!-- <Suspense> -->
       <RouterView />
-      <template #fallback>
+      <!-- <template #fallback>
         Loading...
-      </template>
-    </Suspense>
-  </div>
+      </template> -->
+    <!-- </Suspense> -->
+  </VApp>
+  
 </template>
 
-<script>
+<script setup>
+import AppNavbar from "@/components/shared/AppNavbar.vue"
 
-export default {
-  name: 'App',
-}
 </script>
 
+<style scoped>
+
+</style>

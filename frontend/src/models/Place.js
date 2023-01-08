@@ -1,14 +1,11 @@
-import { Model } from "@vuex-orm/core";
+import { BaseModel } from "./baseModels";
 
-export class Place extends Model {
-  static primaryKey = "uuid";
+export class Place extends BaseModel {
   static entity = "places";
 
   static fields() {
     return {
-      uuid: this.uid(""),
-      updatedAt: this.attr(),
-      createdAt: this.attr(),
+      ...super.fields(),
     };
   }
 }
