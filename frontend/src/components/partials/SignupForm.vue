@@ -38,6 +38,9 @@
 <script setup>
 import { ref } from "vue";
 import api from "@/setup/api";
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
 defineProps({});
 
 const signupFirstName = ref("");

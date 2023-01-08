@@ -11,6 +11,9 @@ const routes = [
     path: "/",
     name: "home",
     component: Homepage,
+    meta: {
+      public: true,
+    }
     // children: appChildren,
     // beforeEnter: async (to, from, next) => {
     //   next({ name: "connection" });

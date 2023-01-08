@@ -1,14 +1,13 @@
 <template>
-  
-      <h1>{{ $t('Dashboard') }}</h1>
-
+  <h1>{{ $t("Dashboard") }}</h1>
 </template>
 
-<script>
-export default {
-  name: "Dashboard",
-};
+<script setup>
+import { ref } from "vue";
+import api from "@/setup/api";
 
+const response = await api.get("/place/")
+console.log("RESPONSEEEE", response)
 </script>
 
 <style scoped>
