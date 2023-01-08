@@ -3,6 +3,7 @@
 </template>
 
 <script setup>
+// TODO fix async/await which breaks navigation
 import { ref } from "vue";
 import api from "@/setup/api";
 
