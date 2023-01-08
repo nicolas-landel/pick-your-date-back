@@ -154,4 +154,5 @@ SHELL_PLUS = "ipython"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-CORS_ALLOWED_ORIGINS = ["http://localhost:8080"]
+# TODO: modify to use .env var
+CORS_ALLOWED_ORIGINS = ["http://localhost:5173", "https://localhost:5173"]

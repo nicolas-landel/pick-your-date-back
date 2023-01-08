@@ -49,3 +49,7 @@ backup:
 
 shell:
 	docker-compose exec back ./manage.py shell_plus
+
+load:
+	docker-compose exec back ./manage.py loaddata user.json place_app.json
+
