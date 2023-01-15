@@ -7,6 +7,7 @@ from user.serializers import UserFullDataSerializer, UserLoginSerializer
 
 class UserLoginView(views.APIView):
     permission_classes = (permissions.AllowAny,)
+    context = {}
 
     def post(self, request, format=None):
         try:
@@ -17,13 +18,13 @@ class UserLoginView(views.APIView):
             user = serializer.validated_data["user"]
             login(request, user)
             token, _ = Token.objects.get_or_create(user=user)
-            context = UserFullDataSerializer(user).data
-            context["token"] = token.key
+            self.context["user"] = UserFullDataSerializer(user).data
+            self.context["token"] = token.key
 
             return Response(
-                context,
+                self.context,
                 status=status.HTTP_202_ACCEPTED,
                 content_type="application/json",
             )
-        except Exception:
+        except Exception as e:
             return Response(None, status=status.HTTP_403_FORBIDDEN)
