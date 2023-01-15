@@ -2,6 +2,7 @@ from django.contrib.auth import login
 from rest_framework import permissions, status, views
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
+
 from user.serializers import UserFullDataSerializer, UserLoginSerializer
 
 
@@ -26,5 +27,5 @@ class UserLoginView(views.APIView):
                 status=status.HTTP_202_ACCEPTED,
                 content_type="application/json",
             )
-        except Exception as e:
+        except Exception:
             return Response(None, status=status.HTTP_403_FORBIDDEN)
