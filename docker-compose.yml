@@ -19,7 +19,7 @@ services:
     tty: true
     restart: "on-failure"
     networks:
-      - app-network
+      - pyd-network
 
   database:
     container_name: database
@@ -37,10 +37,10 @@ services:
       retries: 30
     restart: "on-failure"
     networks:
-      - app-network
+      - pyd-network
 
 volumes:
   postgres_data_project:
 
 networks:
-  app-network:
+  pyd-network:
