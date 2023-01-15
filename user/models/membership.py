@@ -19,6 +19,7 @@ class Membership(models.Model):
         "place.Place", on_delete=models.CASCADE
     )
     role = models.CharField(max_length=200, choices=ROLES, default=ADMIN)
+    is_favorite = models.BooleanField(default=False)
     hide_membership = models.BooleanField(default=False)
 
     @classmethod

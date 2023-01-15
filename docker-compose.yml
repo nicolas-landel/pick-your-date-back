@@ -2,13 +2,13 @@ version: '3.1'
 
 services:
   back:
-    build: ./backend
+    build: .
     container_name: back
     command: python manage.py runserver 0.0.0.0:8090
     ports:
       - "8090:8090"
     volumes:
-      - ./backend/:/code
+      - ./:/code
     env_file:
       - ./.env
     depends_on:
