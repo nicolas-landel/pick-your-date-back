@@ -3,7 +3,6 @@ from django.utils.translation import gettext_lazy as _
 
 
 class Membership(models.Model):
-
     ADMIN = "admin"
     READ_ONLY = "read_only"
     EDITOR = "editor"
@@ -14,9 +13,11 @@ class Membership(models.Model):
         (ADMIN, _("admin")),
     )
 
-    user = models.ForeignKey("user.User", on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        "user.User", related_name="members", on_delete=models.CASCADE
+    )
     place = models.ForeignKey(
-        "place.Place", on_delete=models.CASCADE
+        "place.Place", related_name="members", on_delete=models.CASCADE
     )
     role = models.CharField(max_length=200, choices=ROLES, default=ADMIN)
     is_favorite = models.BooleanField(default=False)
@@ -25,7 +26,9 @@ class Membership(models.Model):
     @classmethod
     def create_membership(cls, user, place, role, hide_membership=False):
         if cls.check_role(role):
-            member = cls(user=user, place=place, role=role, hide_membership=hide_membership)
+            member = cls(
+                user=user, place=place, role=role, hide_membership=hide_membership
+            )
             member.save()
         else:
             raise ValueError("Role is not valid")

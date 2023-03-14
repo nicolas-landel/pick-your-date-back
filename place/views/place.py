@@ -1,22 +1,24 @@
-from core.views import ListView
-from place.models import Place
-from place.serializers import PlaceSerializer
+from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
+from place.models import Place
+from place.serializers import PlaceSerializer
 
-class PlaceListView(ListView):
+
+class PlaceListView(ListAPIView):
     permission_classes = [IsAuthenticated]
     model = Place
     serializer_class = PlaceSerializer
-    serializer = PlaceSerializer
     queryset = Place.objects.all()
 
     def get(self, request, format=None):
-        # user = request.user
-        queryset = self.get_queryset()
-        print("QQQQQ", queryset)
-        serializer = self.serializer(queryset, many=True)
+        user = request.user
+        if not user:
+            return PermissionError()
+        queryset = self.get_queryset().filter()
+        print("QQQQQ", queryset, dir(request), request.user)
+        serializer = self.get_serializer(queryset, many=True)
         print("SSSSS", serializer.data)
         return Response(serializer.data)
         # super().get(request, format)

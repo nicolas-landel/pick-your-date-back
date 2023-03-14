@@ -1,5 +1,6 @@
-from place.models import Answer
 from rest_framework import serializers
+
+from place.models import Answer, Option, Place
 from user.models import User
 
 
@@ -8,6 +9,15 @@ class AnswerSerializer(serializers.ModelSerializer):
         queryset=User.object.all(),
         pk_field=serializers.UUIDField(format="hex_verbose"),
         required=False,
+    )
+    option = serializers.PrimaryKeyRelatedField(
+        queryset=Option.objects.all(),
+        pk_field=serializers.UUIDField(format="hex_verbose"),
+    )
+
+    place = serializers.PrimaryKeyRelatedField(
+        queryset=Place.objects.all(),
+        pk_field=serializers.UUIDField(format="hex_verbose"),
     )
 
     class Meta:

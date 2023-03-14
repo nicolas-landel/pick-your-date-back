@@ -1,12 +1,12 @@
 import uuid
 
-from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
-from django.contrib.auth.models import PermissionsMixin
+from django.contrib.auth.base_user import AbstractBaseUser
+from django.contrib.auth.models import PermissionsMixin, UserManager
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
-class UserManager(BaseUserManager):
+class AppUserManager(UserManager):
     def create_user(self, email, password=None):
         """
         Creates and saves a User with the given email and password.
@@ -30,7 +30,9 @@ class UserManager(BaseUserManager):
             email,
             password=password,
         )
-        user.admin = True
+        user.is_staff = True
+        user.is_admin = True
+        user.is_superuser = True
         user.save(using=self._db)
         return user
 
@@ -50,7 +52,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
-    object = UserManager()
+    object = AppUserManager()
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []  # Email & Password are required by default.
 
