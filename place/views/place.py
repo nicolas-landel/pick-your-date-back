@@ -16,12 +16,6 @@ class PlaceListView(ListAPIView):
         user = request.user
         if not user:
             return PermissionError()
-        queryset = self.get_queryset().filter()
-        print("QQQQQ", queryset, dir(request), request.user)
+        queryset = self.get_queryset().filter(members__user=user)
         serializer = self.get_serializer(queryset, many=True)
-        print("SSSSS", serializer.data)
         return Response(serializer.data)
-        # super().get(request, format)
-        # TODO filter user member of place
-        # queryset = self.get_queryset().filter(user=user)
-        # return Response()
