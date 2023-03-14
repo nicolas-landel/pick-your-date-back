@@ -1,14 +1,14 @@
 up:
-	docker-compose up
+	DOCKER_CLIENT_TIMEOUT=600 COMPOSE_HTTP_TIMEOUT=600 docker-compose up
 
 upd:
-	docker-compose up -d
+	DOCKER_CLIENT_TIMEOUT=600 COMPOSE_HTTP_TIMEOUT=600 docker-compose up -d
 
 buildup:
-	docker-compose up --build
+	DOCKER_CLIENT_TIMEOUT=600 COMPOSE_HTTP_TIMEOUT=600 docker-compose up --build
 
 buildupd:
-	docker-compose up --build -d
+	DOCKER_CLIENT_TIMEOUT=600 COMPOSE_HTTP_TIMEOUT=600 docker-compose up --build -d
 
 exec:
 	docker-compose exec back ./manage.py $(filter-out $@,$(MAKECMDGOALS))
@@ -52,4 +52,3 @@ shell:
 
 load:
 	docker-compose exec back ./manage.py loaddata user.json place_app.json
-
