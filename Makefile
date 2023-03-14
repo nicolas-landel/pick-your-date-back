@@ -17,7 +17,7 @@ migr:
 	docker-compose exec back ./manage.py makemigrations
 	docker-compose exec back ./manage.py migrate --noinput
 
-migr-show:
+show:
 	docker-compose exec back ./manage.py showmigrations
 
 migr-fake:
@@ -52,3 +52,6 @@ shell:
 
 load:
 	docker-compose exec back ./manage.py loaddata user.json place_app.json
+
+db:
+	docker exec -it database psql --username=postgres --dbname=project_db
