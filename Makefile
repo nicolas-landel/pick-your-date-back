@@ -51,7 +51,13 @@ shell:
 	docker-compose exec back ./manage.py shell_plus
 
 load:
-	docker-compose exec back ./manage.py loaddata user.json place_app.json
+	docker-compose exec back ./manage.py loaddata user.json place_app.json membership.json
 
 db:
 	docker exec -it database psql --username=postgres --dbname=project_db
+
+restart:
+	docker-compose stop back && docker-compose up -d back
+
+swagger:
+	docker-compose exec back ./manage.py spectacular --color --file schema.yml

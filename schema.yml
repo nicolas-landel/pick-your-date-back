@@ -1,0 +1,284 @@
+openapi: 3.0.3
+info:
+  title: PYD API
+  version: 1.0.0
+  description: Pick-Your-Date documentation
+paths:
+  /place/:
+    get:
+      operationId: place_list
+      tags:
+      - place
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Place'
+          description: ''
+  /place/place_answers/:
+    get:
+      operationId: place_place_answers_list
+      parameters:
+      - in: query
+        name: place
+        schema:
+          type: string
+          format: uuid
+      tags:
+      - place
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Answer'
+          description: ''
+  /user/{uuid}/:
+    get:
+      operationId: user_retrieve
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this user.
+        required: true
+      tags:
+      - user
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserFullData'
+          description: ''
+  /user/login/:
+    post:
+      operationId: user_login_create
+      tags:
+      - user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserLogin'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserLogin'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserLogin'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserLogin'
+          description: ''
+  /user/signup/:
+    post:
+      operationId: user_signup_create
+      tags:
+      - user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreation'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserCreation'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserCreation'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserCreation'
+          description: ''
+components:
+  schemas:
+    Answer:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        created_by:
+          type: string
+          format: uuid
+        option:
+          type: string
+          format: uuid
+        place:
+          type: string
+          format: uuid
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+        date:
+          type: string
+          format: date
+        is_archived:
+          type: boolean
+      required:
+      - date
+      - option
+      - place
+      - uuid
+    CountryNameEnum:
+      enum:
+      - FRANCE
+      type: string
+      description: '* `FRANCE` - FRANCE'
+    Place:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        created_by:
+          type: string
+          format: uuid
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+        name:
+          type: string
+          title: Place
+          maxLength: 255
+        address:
+          type: string
+          maxLength: 255
+        address_comment:
+          type: string
+          nullable: true
+          maxLength: 510
+        zipcode:
+          type: string
+          nullable: true
+          maxLength: 5
+        city_name:
+          type: string
+          nullable: true
+          maxLength: 50
+        country_name:
+          allOf:
+          - $ref: '#/components/schemas/CountryNameEnum'
+          title: Country
+        latitude:
+          type: number
+          format: double
+          nullable: true
+        longitude:
+          type: number
+          format: double
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        max_capacity:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+      required:
+      - uuid
+    UserCreation:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        last_name:
+          type: string
+          maxLength: 150
+        first_name:
+          type: string
+          maxLength: 30
+        password:
+          type: string
+          writeOnly: true
+      required:
+      - email
+      - password
+    UserFullData:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        email:
+          type: string
+          format: email
+          maxLength: 255
+        last_name:
+          type: string
+          maxLength: 150
+        first_name:
+          type: string
+          maxLength: 30
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          nullable: true
+        is_admin:
+          type: boolean
+      required:
+      - created_at
+      - email
+      - uuid
+    UserLogin:
+      type: object
+      properties:
+        email:
+          type: string
+          writeOnly: true
+        password:
+          type: string
+          writeOnly: true
+      required:
+      - email
+      - password
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"
