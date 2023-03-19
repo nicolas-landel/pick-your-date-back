@@ -4,13 +4,13 @@ from place.models import Place
 from place.views import PlaceListView
 from user.models import Membership
 from utils.tests.base_tests import (
+    TestRequestFactory,
     create_default_user,
     create_place_with_data,
-    testRequestFactory,
 )
 
 
-class PlaceViewTestCase(testRequestFactory, TestCase):
+class PlaceViewTestCase(TestRequestFactory, TestCase):
     view_class = PlaceListView
 
     @classmethod

@@ -7,7 +7,7 @@ from user.models import User
 from user.serializers import UserCreationSerializer
 
 
-class testRequestFactory:
+class TestRequestFactory:
     user = None
     view_class = None
 
