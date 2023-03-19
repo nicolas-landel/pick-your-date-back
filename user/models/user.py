@@ -52,7 +52,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
-    object = AppUserManager()
+    objects = AppUserManager()
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []  # Email & Password are required by default.
 

@@ -9,6 +9,7 @@ from user.serializers import UserFullDataSerializer, UserLoginSerializer
 class UserLoginView(views.APIView):
     permission_classes = (permissions.AllowAny,)
     context = {}
+    serializer_class = UserLoginSerializer
 
     def post(self, request, format=None):
         try:

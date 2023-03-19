@@ -7,5 +7,5 @@ from user.serializers import UserFullDataSerializer
 
 class GetUserView(RetrieveAPIView):
     permission_classes = [IsAuthenticated]
-    queryset = User.object.all()
+    queryset = User.objects.all()
     serializer_class = UserFullDataSerializer

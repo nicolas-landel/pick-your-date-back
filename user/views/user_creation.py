@@ -1,14 +1,16 @@
-from rest_framework import permissions, status, views
 from django.contrib.auth import login
-from rest_framework.response import Response
+from rest_framework import permissions, status, views
 from rest_framework.authtoken.models import Token
-from core.errors_handler import custom_exception_handler
+from rest_framework.response import Response
 
+from core.errors_handler import custom_exception_handler
 from user.serializers import UserCreationSerializer, UserFullDataSerializer
+
 
 class UserCreateView(views.APIView):
     permission_classes = (permissions.AllowAny,)
     context = {}
+    serializer_class = UserCreationSerializer
 
     def post(self, request, format=None):
         try:

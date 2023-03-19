@@ -6,7 +6,7 @@ from user.models import User
 
 class AnswerSerializer(serializers.ModelSerializer):
     created_by = serializers.PrimaryKeyRelatedField(
-        queryset=User.object.all(),
+        queryset=User.objects.all(),
         pk_field=serializers.UUIDField(format="hex_verbose"),
         required=False,
     )

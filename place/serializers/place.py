@@ -1,11 +1,12 @@
-from place.models import Place
 from rest_framework import serializers
+
+from place.models import Place
 from user.models import User
 
 
 class PlaceSerializer(serializers.ModelSerializer):
     created_by = serializers.PrimaryKeyRelatedField(
-        queryset=User.object.all(),
+        queryset=User.objects.all(),
         pk_field=serializers.UUIDField(format="hex_verbose"),
         required=False,
     )
