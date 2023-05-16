@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from place.models import Answer, Comment, Option, Place
 
 # Register your models here.
@@ -37,7 +38,8 @@ class CommentAdmin(admin.ModelAdmin):
 class AnswerAdmin(admin.ModelAdmin):
     list_display = (
         "uuid",
-        "date",
+        "start_date",
+        "duration",
         "option",
         "created_by",
         "is_archived",

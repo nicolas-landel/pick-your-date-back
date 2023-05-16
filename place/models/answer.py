@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -5,7 +7,11 @@ from core.model_utils import BaseModel
 
 
 class Answer(BaseModel):
-    date = models.DateField()
+    # TODO check if need to switch to datetime
+    start_date = models.DateField(default=datetime.date.today, verbose_name=_("Date"))
+    duration = models.PositiveIntegerField(
+        default=1, verbose_name=_("Duration in days")
+    )
     option = models.ForeignKey(
         "place.Option",
         null=True,

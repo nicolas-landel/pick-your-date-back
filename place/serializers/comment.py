@@ -14,7 +14,7 @@ class CommentSerializer(serializers.ModelSerializer):
         queryset=Answer.objects.all(),
         pk_field=serializers.UUIDField(format="hex_verbose"),
     )
-    replied_to = serializers.PrimaryKeyRelatedField(
+    reply_to = serializers.PrimaryKeyRelatedField(
         queryset=Comment.objects.all(),
         pk_field=serializers.UUIDField(format="hex_verbose"),
     )
