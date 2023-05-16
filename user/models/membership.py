@@ -3,14 +3,14 @@ from django.utils.translation import gettext_lazy as _
 
 
 class Membership(models.Model):
-    ADMIN = "admin"
-    READ_ONLY = "read_only"
-    EDITOR = "editor"
+    ADMIN = "ADMIN"
+    READ_ONLY = "READ_ONLY"
+    EDITOR = "EDITOR"
 
     ROLES = (
-        (READ_ONLY, _("read only")),
-        (EDITOR, _("editor")),
-        (ADMIN, _("admin")),
+        (READ_ONLY, _("READ_ONLY")),
+        (EDITOR, _("EDITOR")),
+        (ADMIN, _("ADMIN")),
     )
 
     user = models.ForeignKey(

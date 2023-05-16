@@ -48,7 +48,7 @@ def create_place_with_data(**kwargs):
         options.append(option)
         date = timezone.now() + relativedelta(days=i)
         answer = Answer.objects.create(
-            date=date, place=place, option=option, created_by=user
+            start_date=date, place=place, option=option, created_by=user
         )
         answers.append(answer)
 
